@@ -17,14 +17,15 @@ class shardcog:
         await self.bot.say('Welcome to shard chat\n'+
                            'The Basics:\n'+
                            "We're all about making sure you can get the best position for your payout. We watch out for each other and lock / block unknowns.\n\n"+
-                           "Who can you hit?  Anyone who isn?t in this room is fair game (we usually don't hit Darth Dislnick, he used to be in the room, but isn't, and he usually plays nice, long story). If someone is in this room and has a payout before you, feel free to hit them to move up.\n\n"+
+                           "Who can you hit?  Anyone who isn't in this room is fair game (we usually don't hit Darth Dislnick, he used to be in the room, but isn't, and he usually plays nice, long story). If someone is in this room and has a payout before you, feel free to hit them to move up.\n\n"+
                            "Basically, don't hit people who are in payouts ahead of you.  Johny usually stays in the top 5 at all times, he created this chat and he's usually very busy during his payout window and doesn't get a lot of chances to move up.\n\n"
                            "Use the @ mentions to get people's attention, especially when the shtlist is on the move. To help set up locks or pull people back who don't belong in position.")
         await self.bot.say("Helpful tools for you to use to remember:\n\n"+
                            "!payout - displays the payout by timezones\n"+
                            "!rotation - who is taking 1-5ish on that day.  It dynamically changes.  Central doesn't have a schedule currently.\n"+
                            "!shitlist - these are people who come up and try to snipe or fuck with us during the day, we fuck punch first!\n"
-                           "!reacharound # - Put in a number and it tells you the maximum jump you can make for next position.\n\n"+
+                           "!reacharound # - Put in a number and it tells you the maximum jump you can make for next position.\n"+
+                           "!swgoh <name> - will search swgoh.gg for practically anything.\n\n"+
                            "Some bonus bot commands:\n"+
                            "!choochoo\n"+
                            "!zetaboba\n"+
