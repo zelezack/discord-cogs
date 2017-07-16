@@ -56,5 +56,16 @@ class shitlistcog:
         
         await self.bot.say( name + ' removed from the shitlist')
 
+
+    @shitlist.command(pass_context=True, name="choochoo")
+    async def _shitlist_choochoo(self, ctx, name):
+        ''' - Send out an alert for shitlist express'''
+        shitname = name
+        choochoo = "pictures/choochoo.gif"
+        channel = ctx.message.channel
+        
+        await self.bot.send_file(channel, choochoo)
+        await self.bot.say("@here " + shitname + " needs a ride on the shitlist express")
+        
 def setup(bot):
     bot.add_cog(shitlistcog(bot))

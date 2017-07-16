@@ -32,8 +32,7 @@ class shardcog:
                            "!gif\n"+
                            "!urban\n"
                            )
-    
-        
+            
     @commands.command(pass_context=True, no_pm=True)
     async def swgoh(self, ctx, text):
 
