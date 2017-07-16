@@ -37,6 +37,24 @@ class shitlistcog:
         writeshit_file.close()
         
         await self.bot.say( name + ' added to the shitlist')
+        
+    @shitlist.command(pass_context=True, name="remove")
+    async def _shitlist_remove(self, ctx, name): 
+        '''- Remove a person from the shitlist '''
+        shitlist_name = name
+        shitlistorder = []
+        shitfile = open('cogs/shitfile.txt', 'r')
+        for shit in shitfile:
+            shitlistorder.append(shit.strip())
+        shitlistorder.remove(shitlist_name)
+        shitfile.close()
+        
+        writeshit_file = open('cogs/shitfile.txt','w')
+        for item in shitlistorder:
+            writeshit_file.write('%s\n' % item)
+        writeshit_file.close()
+        
+        await self.bot.say( name + ' removed from the shitlist')
 
 def setup(bot):
     bot.add_cog(shitlistcog(bot))
