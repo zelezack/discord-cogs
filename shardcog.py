@@ -116,5 +116,7 @@ class shardcog:
         else:
             await self.bot.say("You really need me to tell you to go for #1?")
             
+        
+            
 def setup(bot):
     bot.add_cog(shardcog(bot))
