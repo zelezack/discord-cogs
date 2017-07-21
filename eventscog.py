@@ -73,7 +73,7 @@ class eventscog():
             dest_channel = dest_channel.id
         if isinstance(author, discord.User):
             author = author.id
-
+        
         if dest_server not in self.events:
             self.events[dest_server] = {}
 
@@ -82,7 +82,7 @@ class eventscog():
                       'author': author,
                       'command': command,
                       'timedelta': timedelta,
-                      'repeat': repeat
+                      'repeat': repeat,
                       }
         
         log.debug('event dict:\n\t{}'.format(event_dict))
@@ -94,9 +94,8 @@ class eventscog():
         event_dict['server'] = dest_server
         e = Event(event_dict.copy())
         await self._put_event(e)
-
         self.save_events()
-        
+
     @commands.command(pass_context=True)    
     async def eventcreate(self, ctx, name, date, time):
         '''Used to create an event\n 
@@ -122,9 +121,9 @@ class eventscog():
         raid_start = datetime.datetime.combine(event_date, event_time)
 
         time_until_raid = (raid_start - current_time)
-        time_until_raid = int(time_until_raid.total_seconds())
+        time_until_raid = time_until_raid.total_seconds()
         
-        one_hour = int(time_until_raid - 3600)
+        one_hour = time_until_raid - 3600
         
         command = str(self.rancor1hr)
         command2 = str(self.rancornow)
@@ -145,17 +144,18 @@ class eventscog():
         
         await self._add_event(event_name2, command, server, channel, author, one_hour)
         await self.bot.say('I will run "{}" in {}s'.format(command, one_hour))
-        
         await self._add_event(event_name, command2, server, channel, author, time_until_raid)
         await self.bot.say('I will run "{}" in {}s'.format(command2, time_until_raid))
-                    
-    @commands.command(pass_context=True)
-    async def rancor1hr(self):
-        await self.bot.say("@everyone Rancor FFA starting 1 hour from now")
         
     @commands.command(pass_context=True)
-    async def rancornow(self):
-        await self.bot.say("@everyone Rancor FFA starts now")        
+    async def rancor1hr(self, name):
+        #await self.bot.say("@everyone "+str(self.event_name) + " FFA starting 1 hour from now")
+        await self.bot.say("@everyone FFA starting 1 hour from now")
+        
+    @commands.command(pass_context=True)
+    async def rancornow(self, name):
+        #await self.bot.say("@everyone "+str(self.name) + " FFA starts now")
+        await self.bot.say("@everyone FFA starts now")
 
         
 def setup(bot):

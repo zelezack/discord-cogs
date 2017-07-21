@@ -16,9 +16,11 @@ class rotationcog:
         eu = open('cogs/order-eu.txt', 'r')
         uk = open('cogs/order-uk.txt', 'r')
         est = open('cogs/order-est.txt', 'r')
+        cst = open('cogs/order-cst.txt', 'r')
         euorder = []
         ukorder = []
         estorder = []
+        cstorder = []
 
         for euline in eu:
             euorder.append(euline.strip())
@@ -26,16 +28,20 @@ class rotationcog:
             ukorder.append(ukline.strip())
         for estline in est:
             estorder.append(estline.strip())
+        for cstline in cst:
+            cstorder.append(cstline.strip())
 
         eu.close()
         uk.close()
         est.close()
+        cst.close()
         
         await self.bot.send_file(channel, image)
         await self.bot.say("Rotation list for " + str(self.today) + ':\n' +
                            'Viva: ' + ', '.join(euorder) + '\n' +
                            'UK: ' +', '.join(ukorder) + '\n' +
-                           'EST: ' +', '.join(estorder)+ '\n')
+                           'EST: ' +', '.join(estorder)+ '\n'+
+                           'CST: ' + ', '.join(cstorder))
 
             
     @commands.command(pass_context=True)
@@ -45,10 +51,12 @@ class rotationcog:
         eufile = open('cogs/order-eu.txt', 'r')
         ukfile = open('cogs/order-uk.txt', 'r')
         estfile = open('cogs/order-est.txt', 'r')
-
+        cstfile = open('cogs/order-cst.txt', 'r')
+        
         eulist = []
         uklist = []
         estlist = []
+        cstlist = []
         
         for euname in eufile:
             eulist.append(euname.strip())
@@ -63,7 +71,12 @@ class rotationcog:
         for ukname in ukfile:
             uklist.append(ukname.strip())
         uklist += [uklist.pop(0)]
-        ukfile.close()        
+        ukfile.close()
+
+        for cstname in cstfile:
+            cstlist.append(cstname.strip())
+        cstlist += [cstlist.pop(1)]
+        cstfile.close()        
         
         writeeu_file = open('cogs/order-eu.txt','w')
         for item in eulist:
@@ -79,6 +92,11 @@ class rotationcog:
         for item in uklist:
             writeuk_file.write('%s\n' % item)
         writeuk_file.close()
+        
+        writecst_file = open('cogs/order-cst.txt','w')
+        for item in cstlist:
+            writecst_file.write('%s\n' % item)
+        writecst_file.close()
         
         await self.bot.say( 'New day routine complete')
 
