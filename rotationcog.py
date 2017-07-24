@@ -41,7 +41,7 @@ class rotationcog:
                            'Viva: ' + ', '.join(euorder) + '\n' +
                            'UK: ' +', '.join(ukorder) + '\n' +
                            'EST: ' +', '.join(estorder)+ '\n'+
-                           'CST: ' + ', '.join(cstorder))
+                           'CST: ' + ', '.join(cstorder)+', JBK')
 
             
     @commands.command(pass_context=True)
@@ -75,7 +75,7 @@ class rotationcog:
 
         for cstname in cstfile:
             cstlist.append(cstname.strip())
-        cstlist += [cstlist.pop(1)]
+        cstlist += [cstlist.pop(0)]
         cstfile.close()        
         
         writeeu_file = open('cogs/order-eu.txt','w')
