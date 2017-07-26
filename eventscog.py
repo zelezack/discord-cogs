@@ -35,14 +35,14 @@ class Event:
 class eventscog():
     def __init__(self, bot):
         self.bot = bot
-        self.events = fileIO('data/scheduler/events.json', 'load')
+        self.events = fileIO('data/eventscog/events.json', 'load')
         self.queue = asyncio.PriorityQueue(loop=self.bot.loop)
         self.queue_lock = asyncio.Lock()
         self.to_kill = {}
         self._load_events()
 
     def save_events(self):
-        fileIO('data/scheduler/events.json', 'save', self.events)
+        fileIO('data/eventscog/events.json', 'save', self.events)
         log.debug('saved events:\n\t{}'.format(self.events))
 
     def _load_events(self):
@@ -96,11 +96,23 @@ class eventscog():
         await self._put_event(e)
         self.save_events()
 
+    async def _remove_event(self, name, server):
+        await self.queue_lock.acquire()
+        events = []
+        while self.queue.qsize() != 0:
+            time, event = await self.queue.get()
+            if not (name == event.name and server.id == event.server):
+                events.append((time, event))
+
+        for event in events:
+            await self.queue.put(event)
+        self.queue_lock.release()       
+
     @commands.command(pass_context=True)    
     async def eventcreate(self, ctx, name, date, time):
         '''Used to create an event\n 
         Date format - YYYYMMDD\n
-        Time format - 24hour HHMM'''
+        Time format - 24hour HHMM in GMT'''
         event_name = name
         event_date = datetime.strptime(date, "%Y%m%d").date()
         event_time = datetime.strptime(time, "%H%M").time()
@@ -142,14 +154,96 @@ class eventscog():
                             )
         emb.add_field(name="Start Date", value=(new_event["event_start_date"]))
         emb.add_field(name="Start Time", value=(new_event["event_start_time"]))
-        await self.bot.say("@everyone A new raid has been launched")
+        await self.bot.say("@ everyone A new raid has been launched")
         await self.bot.say(embed=emb)
         
         await self._add_event(event_name2, command, server, channel, author, one_hour)
         #await self.bot.say('I will run "{}" in {}s'.format(command, one_hour))
         await self._add_event(event_name, command2, server, channel, author, time_until_raid)
         #await self.bot.say('I will run "{}" in {}s'.format(command2, time_until_raid))
+    
+    @commands.command(pass_context=True)
+    async def raidlist(self, ctx):
+        """Lists all repeated commands
+        """
+        server = ctx.message.server
+        if server.id not in self.events:
+            await self.bot.say('No events scheduled for this server.')
+            return
+        elif len(self.events[server.id]) == 0:
+            await self.bot.say('No events scheduled for this server.')
+            return
+        mess = "Names:\n\t"
+        mess += "\n\t".join(sorted(self.events[server.id].keys()))
+        await self.bot.say(box(mess))
         
+    def run_coro(self, event):
+        channel = self.bot.get_channel(event.channel)
+        try:
+            server = channel.server
+            prefix = self.bot.settings.get_prefixes(server)[0]
+        except AttributeError:
+            log.debug("Channel no longer found, not running scheduled event.")
+            return
+        data = {}
+        data['timestamp'] = time.strftime("%Y-%m-%dT%H:%M:%S%z", time.gmtime())
+        data['id'] = randint(10**(17), (10**18) - 1)
+        data['content'] = prefix + event.command
+        data['channel'] = self.bot.get_channel(event.channel)
+        data['author'] = {'id': event.author}
+        data['nonce'] = randint(-2**32, (2**32) - 1)
+        data['channel_id'] = event.channel
+        data['reactions'] = []
+        fake_message = discord.Message(**data)
+        # coro = self.bot.process_commands(fake_message)
+        log.info("Running '{}' in {}".format(event.name, event.server))
+        # self.bot.loop.create_task(coro)
+        self.bot.dispatch('message', fake_message)
+
+    async def queue_manager(self):
+        while self == self.bot.get_cog('eventscog'):
+            await self.queue_lock.acquire()
+            if self.queue.qsize() != 0:
+                curr_time = int(time.time())
+                next_tuple = await self.queue.get()
+                next_time = next_tuple[0]
+                next_event = next_tuple[1]
+                diff = next_time - curr_time
+                diff = diff if diff >= 0 else 0
+                if diff < 30:
+                    log.debug('scheduling call of "{}" in {}s'.format(
+                        next_event.name, diff))
+                    fut = self.bot.loop.call_later(diff, self.run_coro,
+                                                   next_event)
+                    self.to_kill[next_time] = fut
+                    if next_event.repeat:
+                        await self._put_event(next_event, next_time,
+                                              next_event.timedelta)
+                    else:
+                        del self.events[next_event.server][next_event.name]
+                        self.save_events()
+                else:
+                    log.debug('Will run {} "{}" in {}s'.format(
+                        next_event.name, next_event.command, diff))
+                    await self._put_event(next_event, next_time)
+            self.queue_lock.release()
+
+            to_delete = []
+            for start_time, old_command in self.to_kill.items():
+                if time.time() > start_time + 30:
+                    old_command.cancel()
+                    to_delete.append(start_time)
+            for item in to_delete:
+                del self.to_kill[item]
+
+            await asyncio.sleep(5)
+        log.debug('manager dying')
+        while self.queue.qsize() != 0:
+            await self.queue.get()
+        while len(self.to_kill) != 0:
+            curr = self.to_kill.pop()
+            curr.cancel()
+    
     @commands.command(pass_context=True)
     async def rancor1hr(self, name):
         #await self.bot.say("@everyone "+str(self.event_name) + " FFA starting 1 hour from now")
@@ -159,8 +253,23 @@ class eventscog():
     async def rancornow(self, name):
         #await self.bot.say("@everyone "+str(self.name) + " FFA starts now")
         await self.bot.say("@everyone FFA starts now")
+    
+def check_folder():
+    if not os.path.exists('data/eventscog'):
+        os.mkdir('data/scheduler') 
+
+def check_files():
+    f = 'data/eventscog/events.json'
+    if not os.path.exists(f):
+        fileIO(f, 'save', {})    
+        
+
 
         
 def setup(bot):
+    check_folder()
+    check_files()
     n = eventscog(bot)
+    loop = asyncio.get_event_loop()
+    loop.create_task(n.queue_manager())
     bot.add_cog(n)

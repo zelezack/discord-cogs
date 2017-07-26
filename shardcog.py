@@ -22,7 +22,7 @@ class shardcog:
                            "Use the @ mentions to get people's attention, especially when the shtlist is on the move. To help set up locks or pull people back who don't belong in position.")
         await self.bot.say("Helpful tools for you to use to remember:\n\n"+
                            "!payout - displays the payout by timezones\n"+
-                           "!rotation - who is taking 1-5ish on that day.  It dynamically changes.  Central doesn't have a schedule currently.\n"+
+                           "!rotation - who is taking 1-5ish on that day.  It dynamically changes.\n"+
                            "!shitlist - these are people who come up and try to snipe or fuck with us during the day, we fuck punch first!\n"
                            "!reacharound # - Put in a number and it tells you the maximum jump you can make for next position.\n"+
                            "!swgoh <name> - will search swgoh.gg for practically anything.\n\n"+

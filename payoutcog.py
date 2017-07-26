@@ -11,15 +11,19 @@ class payoutcog:
     @commands.group(pass_context=True)
     async def payout(self, ctx):
         '''Payout list for squad arena'''
+        ru = open('cogs/payouts-ru.txt', 'r')
         eu = open('cogs/payouts-eu.txt', 'r')
         uk = open('cogs/payouts-uk.txt', 'r')
         est = open('cogs/payouts-est.txt', 'r')
         cst = open('cogs/payouts-cst.txt', 'r')
+        ruorder = []
         euorder = []
         ukorder = []
         estorder = []
         cstorder = []
         if ctx.invoked_subcommand is None:
+            for ruline in ru:
+                ruorder.append(ruline.strip())
             for euline in eu:
                 euorder.append(euline.strip())
             for ukline in uk:
@@ -28,14 +32,17 @@ class payoutcog:
                 estorder.append(estline.strip())
             for cstline in cst:
                 cstorder.append(cstline.strip())
+            ru.close()
             eu.close()
             uk.close()
             est.close()
             cst.close()
-            await self.bot.say("Payout list: \n" + ', '.join(euorder) + " - 1PM EDT, 12PM CDT, 17:00 GMT\n"+
-                               ', '.join(ukorder) + " - 2PM EDT, 1PM CDT, 18:00 GMT\n"+
-                               ', '.join(estorder) + " - 7PM EDT, 6PM CDT, 23:00 GMT\n"+
-                               ', '.join(cstorder) + " - 8PM EDT, 7PM CDT, 24:00 GMT\n")
+            await self.bot.say("Payout list: \n" +
+                               ', '.join(ruorder) + " - GMT+3\n"+
+                               ', '.join(euorder) + " - GMT+1\n"+
+                               ', '.join(ukorder) + " - GMT\n"+
+                               ', '.join(estorder) + " - GMT-5\n"+
+                               ', '.join(cstorder) + " - GMT-6\n")
             await send_cmd_help(ctx)
     @payout.command(pass_context=True, name="add")
     async def _payout_add(self, ctx, timezone, name): 
