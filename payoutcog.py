@@ -11,11 +11,11 @@ class payoutcog:
     @commands.group(pass_context=True)
     async def payout(self, ctx):
         '''Payout list for squad arena'''
-        ru = open('cogs/payouts-ru.txt', 'r')
-        eu = open('cogs/payouts-eu.txt', 'r')
-        uk = open('cogs/payouts-uk.txt', 'r')
-        est = open('cogs/payouts-est.txt', 'r')
-        cst = open('cogs/payouts-cst.txt', 'r')
+        ru = open('cogs/payouts-gmt+3.txt', 'r')
+        eu = open('cogs/payouts-gmt+1.txt', 'r')
+        uk = open('cogs/payouts-gmt.txt', 'r')
+        est = open('cogs/payouts-gmt-5.txt', 'r')
+        cst = open('cogs/payouts-gmt-6.txt', 'r')
         ruorder = []
         euorder = []
         ukorder = []
@@ -44,75 +44,30 @@ class payoutcog:
                                ', '.join(estorder) + " - GMT-5\n"+
                                ', '.join(cstorder) + " - GMT-6\n")
             await send_cmd_help(ctx)
+            
     @payout.command(pass_context=True, name="add")
-    async def _payout_add(self, ctx, timezone, name): 
+    async def _payout_add(self, ctx, timezone, *, name): 
         '''Add a person to a payout\n
-        Valid timezones eu, uk, est, cst'''
-        timezone_name = timezone
+        Valid timezone format gmt+/-#'''
+        timezone_name = timezone.lower()
         person = name
         
-        #Add person to EU order
-        if timezone_name == "eu":
-            eufile = open('cogs/payouts-eu.txt', 'r')
-            eulist = []
-            for euname in eufile:
-                eulist.append(euname.strip())
-            eulist.append(person)
-            eufile.close()
-            
-            writeeu_file = open('cogs/payouts-eu.txt','w')
-            for item in eulist:
-                writeeu_file.write('%s\n' % item)
-            writeeu_file.close()
-            
-            await self.bot.say( name + ' added to the EU payout')
+        timezones = ['gmt+3', 'gmt+1', 'gmt', 'gmt-5','gmt-6','gmt-7','gmt-8']
         
-        #Add person to UK order
-        elif timezone_name == "uk":
-            ukfile = open('cogs/payouts-uk.txt', 'r')
-            uklist = []
-            for ukname in ukfile:
-                uklist.append(ukname.strip())
-            uklist.append(person)
-            ukfile.close()
-            
-            writeuk_file = open('cogs/payouts-uk.txt','w')
-            for item in uklist:
-                writeuk_file.write('%s\n' % item)
-            writeuk_file.close()
-            
-            await self.bot.say( name + ' added to the UK payout')
+        #Read in the correct payout list and add a user to it
+        if timezone_name in timezones:
+            payout_file = open('cogs/payouts-'+timezone_name+'.txt', 'r')
+            payoutlist = []
+            for name in payout_file:
+                payoutlist.append(name.strip())
+            payout_file.close()
+            payoutlist.append(person)
+            write_file = open('cogs/payouts-'+timezone_name+'.txt', 'w')
+            for item in payoutlist:
+                write_file.write('%s\n' % item)
+            write_file.close()
         
-        #Add person to EST order
-        elif timezone_name == "est":
-            estfile = open('cogs/payouts-est.txt', 'r')
-            estlist = []
-            for estname in estfile:
-                estlist.append(estname.strip())
-            estlist.append(person)
-            estfile.close()
-            
-            writeest_file = open('cogs/payouts-est.txt','w')
-            for item in estlist:
-                writeest_file.write('%s\n' % item)
-            writeest_file.close()
-            
-            await self.bot.say( name + ' added to the EST payout')
-
-        #Add person to CST order
-        elif timezone_name == "cst":
-            cstfile = open('cogs/payouts-cst.txt', 'r')
-            cstlist = []
-            for cstname in cstfile:
-                cstlist.append(cstname.strip())
-            cstlist.append(person)
-            cstfile.close()
-            writecst_file = open('cogs/payouts-cst.txt','w')
-            for item in cstlist:
-                writecst_file.write('%s\n' % item)
-            writecst_file.close()
-            
-            await self.bot.say( name + ' added to the CST payout')
-        
+        await self.bot.say( payoutlist[-1] + ' added to the '+ timezone_name +' payout')    
+       
 def setup(bot):
     bot.add_cog(payoutcog(bot))

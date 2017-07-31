@@ -11,6 +11,7 @@ class shipscog:
     @commands.group(pass_context=True)
     async def ships(self, ctx):
         '''Payout list for ships arena'''
+        india = open('cogs/ships-india.txt', 'r')
         sa = open('cogs/ships-sa.txt', 'r')
         eu = open('cogs/ships-eu.txt', 'r')
         pst = open('cogs/ships-pst.txt', 'r')
@@ -18,6 +19,7 @@ class shipscog:
         mst = open('cogs/ships-mst.txt', 'r')
         cst = open('cogs/ships-cst.txt', 'r')
         
+        indorder = []
         saorder =[]
         euorder = []
         pstorder = []
@@ -26,6 +28,8 @@ class shipscog:
         mstorder = []
         
         if ctx.invoked_subcommand is None:
+            for indline in india:
+                indorder.append(indline.strip())
             for euline in eu:
                 euorder.append(euline.strip())
             for pstline in pst:
@@ -37,7 +41,9 @@ class shipscog:
             for mstline in mst:
                 mstorder.append(mstline.strip())
             for saline in sa:
-                saorder.append(saline.strip())                
+                saorder.append(saline.strip())
+                
+            india.close()
             sa.close()
             eu.close()
             pst.close()
@@ -46,6 +52,7 @@ class shipscog:
             mst.close()
             
             await self.bot.say("Payout list: \n" +
+                               ', '.join(indorder) + " - GMT+9\n"+
                                ', '.join(saorder) + " - GMT+2\n"+
                                ', '.join(euorder) + " - GMT+1\n"+
                                ', '.join(estorder) + " - GMT-5\n"+
@@ -54,11 +61,27 @@ class shipscog:
                                ', '.join(pstorder) + " - GMT-8\n")
 
     @ships.command(pass_context=True, name="add")
-    async def _ships_add(self, ctx, timezone, name): 
+    async def _ships_add(self, ctx, timezone, *, name): 
         '''Add a person to a payout\n
         Valid timezones gmt-/+ #'''
         timezone_name = timezone.upper()
         person = name
+        
+                #Add person to EU order
+        if timezone_name == "GMT+9":
+            indfile = open('cogs/ships-india.txt', 'r')
+            indlist = []
+            for indname in indfile:
+                indlist.append(indname.strip())
+            indlist.append(person)
+            indfile.close()
+            
+            writeind_file = open('cogs/ships-india.txt','w')
+            for item in indlist:
+                writeind_file.write('%s\n' % item)
+            writeind_file.close()
+            
+            await self.bot.say( name + ' added to the GMT+9 payout')
         
         #Add person to EU order
         if timezone_name == "GMT+1":
