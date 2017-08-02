@@ -1,5 +1,6 @@
 import discord
 from discord.ext import commands
+from datetime import date
 from __main__ import send_cmd_help
 
 class shipscog:
@@ -160,6 +161,40 @@ class shipscog:
             writemst_file.close()
             
             await self.bot.say( name + ' added to the GMT-7 payout')
+            
+            
+    @commands.command(pass_context=True)
+    async def starfleet(self, ctx):
+        '''Payout list for ships arena'''
+        self.today = date.today()
+        starfleet = open('cogs/starships-gmt+2.txt', 'r')
+        
+        starorder = []
+
+        
+        if ctx.invoked_subcommand is None:
+            for starline in starfleet:
+                starorder.append(starline.strip()) 
+            starfleet.close()
+           
+            
+            await self.bot.say("Payout order for "+ str(self.today)+":\n" +
+                               ', '.join(starorder))
+                               
+    @commands.command(pass_context=True)
+    async def starfleet_rotate(self):
+        starfile = open('cogs/starships-gmt+2.txt', 'r')
+        starlist = []
+        
+        for starname in starfile:
+            starlist.append(starname.strip())
+        starlist.insert(0, starlist.pop())
+        starfile.close()
+        
+        writestar_file = open('cogs/starships-gmt+2.txt','w')
+        for item in starlist:
+            writestar_file.write('%s\n' % item)
+        writestar_file.close()
         
 def setup(bot):
     bot.add_cog(shipscog(bot))

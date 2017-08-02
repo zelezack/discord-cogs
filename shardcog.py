@@ -48,6 +48,16 @@ class shardcog:
         soup = BeautifulSoup(r.text, "html.parser")
         urlfinder = soup.find('cite').text
         await self.bot.say(urlfinder)
+        
+        
+    @commands.command(pass_context=True, no_pm=True)
+    async def helper(self):
+        await self.bot.say("List of helpful commands:\n\n"+
+                           "!reacharound # - Put in a number and it tells you the maximum jump you can make for next position.\n"+
+                           "!swgoh <name> - will search swgoh.gg for practically anything.\n"+
+                           "!ships - displays the payout by timezones\n"+
+                           "!gif <text> - displays a gif based on the text\n"+
+                           "!urban <text> - displays urban dictionary references\n")
             
     @commands.command(pass_context=True)
     async def reacharound(self, ctx, position):

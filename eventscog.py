@@ -40,6 +40,7 @@ class eventscog():
         self.queue_lock = asyncio.Lock()
         self.to_kill = {}
         self._load_events()
+        self.name = ""
 
     def save_events(self):
         fileIO('data/eventscog/events.json', 'save', self.events)
@@ -119,6 +120,7 @@ class eventscog():
         channel = ctx.message.channel
         server = ctx.message.server
         author = ctx.message.author
+        self.name = str(event_name) 
 
         new_event = { 
             "event_name": event_name,
@@ -138,14 +140,14 @@ class eventscog():
         time_until_raid = time_until_raid.total_seconds()
         time_until_raid = time_until_raid - 480
         
-        one_hour = time_until_raid - 3635
+        one_hour = time_until_raid - 3658
         
         command = str(self.rancor1hr)
         command2 = str(self.rancornow)
         
         event_name2 = str(event_name + "_1hr")
         event_name1 = str(event_name + "_now")
-            
+           
         #create embedded notification in Discord
         urldate = str(datetime.strptime(date, "%Y%m%d").date()).replace("-", "")
 
@@ -155,9 +157,10 @@ class eventscog():
                             )
         emb.add_field(name="Start Date", value=(new_event["event_start_date"]))
         emb.add_field(name="Start Time", value=(new_event["event_start_time"]))
-        await self.bot.say("@everyone A new raid has been launched")
+        await self.bot.say("@everyone A new "+self.name+" raid has been launched")
         await self.bot.say(embed=emb)
         
+
         await self._add_event(event_name2, command, server, channel, author, one_hour)
         #await self.bot.say('I will run "{}" in {}s'.format(command, one_hour))
         #await self._add_event(event_name1, command2, server, channel, author, until_raid)
@@ -233,14 +236,11 @@ class eventscog():
     @commands.command(pass_context=True)
     async def rancor1hr(self, name):
         #await self.bot.say("@everyone "+str(self.event_name) + " FFA starting 1 hour from now")
-        await self.bot.say("@everyone FFA starting 1 hour from now")
+        await self.bot.say("@everyone "+str(self.name) +" FFA starting 1 hour from now")
         await asyncio.sleep(3600)
-        await self.bot.say("@everyone FFA starts now")
+        await self.bot.say("@everyone "+str(self.name) + " FFA starts now")
         
-    @commands.command(pass_context=True)
-    async def rancornow(self, name):
-        #await self.bot.say("@everyone "+str(self.name) + " FFA starts now")
-        await self.bot.say("@everyone FFA starts now")
+
     
 def check_folder():
     if not os.path.exists('data/eventscog'):
