@@ -28,14 +28,14 @@ class shardcog:
                            "!swgoh <name> - will search swgoh.gg for practically anything.\n\n"+
                            "Some bonus bot commands:\n"+
                            "!choochoo\n"+
-                           "!zetaboba\n"+
+                           "!zetabobba\n"+
                            "!buttstuff\n"+
                            "!gif\n"+
                            "!urban\n"
                            )
             
     @commands.command(pass_context=True, no_pm=True)
-    async def swgoh(self, ctx, text):
+    async def swgoh(self, ctx, *,text):
 
         """Its google, you search with it."""
         search_type = ctx.message.content[len(ctx.prefix + ctx.command.name) + 1:].lower().split(" ")
