@@ -10,7 +10,7 @@ import time
 import aiohttp
 import asyncio
 
-settings = {"POLL_DURATION" : 60}
+settings = {"POLL_DURATION" : 3600}
 
 
 class RPS(Enum):

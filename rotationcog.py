@@ -1,6 +1,13 @@
 import discord
-from datetime import date
+import json
+from datetime import datetime, date, time, timedelta, timezone
 from discord.ext import commands
+from cogs.utils import checks
+from cogs.utils.dataIO import fileIO
+from __main__ import send_cmd_help
+
+import logging
+import time
 
 class rotationcog:
     
@@ -11,94 +18,82 @@ class rotationcog:
     async def rotation(self, ctx):
         image = "pictures/giphy.gif"
         channel = ctx.message.channel
-        '''Payout list for squad arena'''
         self.today = date.today()
-        eu = open('cogs/order-eu.txt', 'r')
-        uk = open('cogs/order-uk.txt', 'r')
-        est = open('cogs/order-est.txt', 'r')
-        cst = open('cogs/order-cst.txt', 'r')
+        with open('cogs/payouts.json', 'r') as json_file:
+            parsed = json.load(json_file)
+        ruorder = []
         euorder = []
         ukorder = []
         estorder = []
         cstorder = []
+        pstorder = []
 
-        for euline in eu:
-            euorder.append(euline.strip())
-        for ukline in uk:
-            ukorder.append(ukline.strip())
-        for estline in est:
-            estorder.append(estline.strip())
-        for cstline in cst:
-            cstorder.append(cstline.strip())
-
-        eu.close()
-        uk.close()
-        est.close()
-        cst.close()
-        
+        for p in parsed['squad']:
+            ordname = p['order']
+            if ordname == 'ruorder':
+                rotation = ', '.join(map(str,p['rotation']))
+                ruorder.append(rotation)
+                ruflag = p['flag']
+                rutz = p['tzname']
+            elif ordname == 'euorder':
+                rotation = ', '.join(map(str,p['rotation']))
+                euorder.append(rotation)
+                euflag = p['flag']
+                eutz = p['tzname']
+            elif ordname == 'ukorder':
+                rotation = ', '.join(map(str,p['rotation']))
+                ukorder.append(rotation)
+                ukflag = p['flag']
+                uktz = p['tzname']
+            elif ordname == 'estorder':
+                rotation = ', '.join(map(str,p['rotation']))
+                estorder.append(rotation)
+                usflag = p['flag']
+                esttz = p['tzname']
+            elif ordname == 'cstorder':
+                rotation = ', '.join(map(str,p['rotation']))
+                cstorder.append(rotation)
+                csttz = p['tzname']
+            else:
+                rotation = ', '.join(map(str,p['rotation']))
+                pstorder.append(rotation)
+                psttz = p['tzname']
+                    
         await self.bot.send_file(channel, image)
         await self.bot.say("Rotation list for " + str(self.today) + ':\n' +
-                           'Viva: ' + ', '.join(euorder) + '\n' +
-                           'UK: ' +', '.join(ukorder) + '\n' +
-                           'EST: ' +', '.join(estorder)+ '\n'+
-                           'CST: ' + ', '.join(cstorder)+', JBK')
+                ':flag_ru: MR: ' + ', '.join(ruorder) +'\n' +
+                ':flag_eu: Viva: ' + ', '.join(euorder) + ', LouLou, Alex\n' +
+                ':flag_gb: UK: ' +', '.join(ukorder) + '\n' +
+                ':flag_us: EST: ' +', '.join(estorder)+ '\n'+
+                ':flag_us: CST: ' + ', '.join(cstorder) + '\n' +
+                ':flag_us: PST: ' +  ', '.join(pstorder) + '\n')
 
-            
     @commands.command(pass_context=True)
-    async def newday(self): 
-        '''Newday routine to change the payout order'''
-    
-        eufile = open('cogs/order-eu.txt', 'r')
-        ukfile = open('cogs/order-uk.txt', 'r')
-        estfile = open('cogs/order-est.txt', 'r')
-        cstfile = open('cogs/order-cst.txt', 'r')
-        
-        eulist = []
-        uklist = []
-        estlist = []
-        cstlist = []
-        
-        for euname in eufile:
-            eulist.append(euname.strip())
-        eulist += [eulist.pop(0)]
-        eufile.close()
-        
-        for estname in estfile:
-            estlist.append(estname.strip())
-        estlist += [estlist.pop(0)]
-        estfile.close()
-        
-        for ukname in ukfile:
-            uklist.append(ukname.strip())
-        uklist += [uklist.pop(0)]
-        ukfile.close()
-
-        for cstname in cstfile:
-            cstlist.append(cstname.strip())
-        cstlist += [cstlist.pop(0)]
-        cstfile.close()        
-        
-        writeeu_file = open('cogs/order-eu.txt','w')
-        for item in eulist:
-            writeeu_file.write('%s\n' % item)
-        writeeu_file.close()
-        
-        writeest_file = open('cogs/order-est.txt','w')
-        for item in estlist:
-            writeest_file.write('%s\n' % item)
-        writeest_file.close()
-        
-        writeuk_file = open('cogs/order-uk.txt','w')
-        for item in uklist:
-            writeuk_file.write('%s\n' % item)
-        writeuk_file.close()
-        
-        writecst_file = open('cogs/order-cst.txt','w')
-        for item in cstlist:
-            writecst_file.write('%s\n' % item)
-        writecst_file.close()
-        
-        await self.bot.say( 'New day routine complete')
+    @checks.mod_or_permissions(manage_messages=True)
+    async def newday(self, ctx):
+        with open('cogs/payouts.json', 'r') as json_file:
+            parsed = json.load(json_file)
+        for p in parsed['squad']:
+            ordname = p['order']
+            if ordname == 'euorder':
+                rotation = ', '.join(map(str,p['rotation']))
+                person = p['rotation'].pop(0)
+                p['rotation'].append(person)
+            if ordname == 'ukorder':
+                rotation = ', '.join(map(str,p['rotation']))
+                person = p['rotation'].pop(0)
+                p['rotation'].append(person)
+            if ordname == 'estorder':
+                rotation = ', '.join(map(str,p['rotation']))
+                person = p['rotation'].pop(0)
+                p['rotation'].append(person)
+            if ordname == 'cstorder':
+                rotation = ', '.join(map(str,p['rotation']))
+                person = p['rotation'].pop(0)
+                p['rotation'].append(person)
+        await self.bot.say("New day complete")
+        with open('cogs/payouts.json', 'w') as json_file:
+            json.dump(parsed,json_file, sort_keys= True, indent=4)
 
 def setup(bot):
     bot.add_cog(rotationcog(bot))

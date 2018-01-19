@@ -1,0 +1,237 @@
+{
+    "fleet": [
+        {
+            "members": [
+                "Cartan Cha"
+            ],
+            "order": "indorder",
+            "tzname": "GMT+9",
+            "utctime": "10:00:00"
+        },
+        {
+            "members": [
+                "Astonmartin"
+            ],
+            "order": "taiorder",
+            "tzname": "GMT+8",
+            "utctime": "11:00:00"
+        },
+        {
+            "members": [
+                "Matt"
+            ],
+            "order": "saorder",
+            "tzname": "GMT+2",
+            "utctime": "17:00:00"
+        },
+        {
+            "members": [
+                "Aboo Rhaegar",
+                "Danielix",
+                "Deadspace",
+                "DreisLao",
+                "Earxe",
+                "Havoc",
+                "PValium",
+                "Redios",
+                "Wookierotica",
+                "YRG"
+            ],
+            "order": "euorder",
+            "tzname": "GMT+1",
+            "utctime": "18:00:00"
+        },
+        {
+            "members": [
+                "DikButt",
+                "Himelfarb",
+                "Johnritaiii",
+                "Weyl",
+                "ChuckTaylor",
+                "Neville",
+                "Car Al Mel",
+                "Bozz",
+                "Steve7",
+                "Cy",
+                "Wiickett",
+                "Sbdraptor",
+                "TraylonSatty",
+                "GingerVitas",
+                "Slacks Cardigan"
+            ],
+            "order": "estorder",
+            "tzname": "GMT-5",
+            "utctime": "00:00:00"
+        },
+        {
+            "members": [
+                "Aden Ski",
+                "Bill",
+                "Jon Snow",
+                "Nimroad",
+                "Snake",
+                "Tastynacho"
+            ],
+            "order": "cstorder",
+            "tzname": "GMT-6",
+            "utctime": "01:00:00"
+        },
+        {
+            "members": [
+                "AJMagic",
+                "Atreyu",
+                "Kate3PO",
+                "Rath",
+                "Seabass4818"
+            ],
+            "order": "mstorder",
+            "tzname": "GMT-7",
+            "utctime": "02:00:00"
+        },
+        {
+            "members": [
+                "Itmustbestarwars"
+            ],
+            "order": "pstorder",
+            "tzname": "GMT-8",
+            "utctime": "03:00:00"
+        },
+        {
+            "members": [
+                "Mumble"
+            ],
+            "order": "akorder",
+            "tzname": "GMT-9",
+            "utctime": "05:00:00"
+        }
+    ],
+    "shitlist": [
+        {
+            "members": [
+                "Gutrek",
+                "Lookaround",
+                "Doublan",
+                "501st Trooper74",
+                "Aranud",
+                "Xuqlid",
+                "Jak Telor",
+                "Thestone",
+                "advanced",
+                "SportsDoc17",
+                "knockamusprime",
+                "Ivan",
+                "Anarchy",
+                "Beld",
+                "poppu",
+                "Coranti",
+                "Shitpin"
+            ]
+        }
+    ],
+    "squad": [
+        {
+            "flag": ":flag_ru:",
+            "members": [
+                "Amarey"
+            ],
+            "order": "ruorder",
+            "rotation": [
+                "Amarey"
+            ],
+            "tzname": "GMT+3",
+            "utctime": "16:00:00"
+        },
+        {
+            "flag": ":flag_eu:",
+            "members": [
+                "Tom",
+                "Landa",
+                "LouLou",
+                "Alex"
+            ],
+            "order": "euorder",
+            "rotation": [
+                "Tom",
+                "Landa"
+            ],
+            "tzname": "GMT+1",
+            "utctime": "17:00:00"
+        },
+        {
+            "flag": ":flag_gb:",
+            "members": [
+                "Jeff",
+                "Asha",
+                "David",
+                "TheRascalKing"
+            ],
+            "order": "ukorder",
+            "rotation": [
+                "Ashaman",
+                "David",
+                "Jeff"
+            ],
+            "tzname": "GMT",
+            "utctime": "18:00:00"
+        },
+        {
+            "flag": ":flag_us:",
+            "members": [
+                "DB",
+                "DD",
+                "Skammadix",
+                "Vondy",
+                "JPK",
+                "Boolsith",
+                "GR1M",
+                "Xanderxman"
+            ],
+            "order": "estorder",
+            "rotation": [
+                "DB",
+                "Vondy",
+                "Skammadix",
+                "DD",
+                "JPK",
+                "Bool"
+            ],
+            "tzname": "GMT-5",
+            "utctime": "23:00:00"
+        },
+        {
+            "flag": ":flag_us:",
+            "members": [
+                "Cherno",
+                "Jolly",
+                "Tigle",
+                "Notadopted",
+                "JustBKillin",
+                "Taco",
+                "MistahShowtime",
+                "Strive"
+            ],
+            "order": "cstorder",
+            "rotation": [
+                "Taco",
+                "Jolly",
+                "MistahShowtime",
+                "Strive",
+                "JustBKillin"
+            ],
+            "tzname": "GMT-6",
+            "utctime": "00:00:00"
+        },
+        {
+            "flag": ":flag_us:",
+            "members": [
+                "Awasa Ba'hidar"
+            ],
+            "order": "pstorder",
+            "rotation": [
+                "Awasa Ba'hidar"
+            ],
+            "tzname": "GMT-8",
+            "utctime": "02:00:00"
+        }
+    ]
+}

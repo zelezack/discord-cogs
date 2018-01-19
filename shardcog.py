@@ -33,7 +33,7 @@ class shardcog:
                            "!gif\n"+
                            "!urban\n"
                            )
-            
+          
     @commands.command(pass_context=True, no_pm=True)
     async def swgoh(self, ctx, *,text):
 
@@ -51,7 +51,7 @@ class shardcog:
         
         
     @commands.command(pass_context=True, no_pm=True)
-    async def helper(self):
+    async def helpme(self):
         await self.bot.say("List of helpful commands:\n\n"+
                            "!reacharound # - Put in a number and it tells you the maximum jump you can make for next position.\n"+
                            "!swgoh <name> - will search swgoh.gg for practically anything.\n"+
