@@ -74,7 +74,7 @@
             ],
             "order": "cstorder",
             "tzname": "GMT-6",
-            "utctime": "01:00:00"
+            "utctime": "20:00:00"
         },
         {
             "members": [
@@ -86,7 +86,7 @@
             ],
             "order": "mstorder",
             "tzname": "GMT-7",
-            "utctime": "02:00:00"
+            "utctime": "21:00:00"
         },
         {
             "members": [
@@ -94,7 +94,7 @@
             ],
             "order": "pstorder",
             "tzname": "GMT-8",
-            "utctime": "03:00:00"
+            "utctime": "22:00:00"
         },
         {
             "members": [
@@ -102,7 +102,7 @@
             ],
             "order": "akorder",
             "tzname": "GMT-9",
-            "utctime": "05:00:00"
+            "utctime": "23:00:00"
         }
     ],
     "fleet-shit": [
@@ -138,7 +138,8 @@
                 "Beld",
                 "poppu",
                 "Coranti",
-                "Shitpin"
+                "Shitpin",
+                "MistahSlowGuy"
             ]
         }
     ],
@@ -153,7 +154,7 @@
                 "Amarey"
             ],
             "tzname": "GMT+3",
-            "utctime": "16:00:00"
+            "utctime": "11:00:00"
         },
         {
             "flag": ":flag_eu:",
@@ -165,11 +166,11 @@
             ],
             "order": "euorder",
             "rotation": [
-                "Tom",
-                "Landa"
+                "Landa",
+                "Tom"
             ],
             "tzname": "GMT+1",
-            "utctime": "17:00:00"
+            "utctime": "12:00:00"
         },
         {
             "flag": ":flag_gb:",
@@ -186,7 +187,7 @@
                 "Jeff"
             ],
             "tzname": "GMT",
-            "utctime": "18:00:00"
+            "utctime": "13:00:00"
         },
         {
             "flag": ":flag_us:",
@@ -202,15 +203,15 @@
             ],
             "order": "estorder",
             "rotation": [
-                "DB",
-                "Vondy",
-                "Skammadix",
                 "DD",
                 "JPK",
-                "Bool"
+                "Bool",
+                "DB",
+                "Vondy",
+                "Skammadix"
             ],
             "tzname": "GMT-5",
-            "utctime": "23:00:00"
+            "utctime": "18:00:00"
         },
         {
             "flag": ":flag_us:",
@@ -226,14 +227,14 @@
             ],
             "order": "cstorder",
             "rotation": [
+                "Strive",
+                "JustBKillin",
                 "Taco",
                 "Jolly",
-                "MistahShowtime",
-                "Strive",
-                "JustBKillin"
+                "MistahShowtime"
             ],
             "tzname": "GMT-6",
-            "utctime": "00:00:00"
+            "utctime": "19:00:00"
         },
         {
             "flag": ":flag_us:",
@@ -245,7 +246,7 @@
                 "Awasa Ba'hidar"
             ],
             "tzname": "GMT-8",
-            "utctime": "02:00:00"
+            "utctime": "21:00:00"
         }
     ]
 }

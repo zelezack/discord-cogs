@@ -83,8 +83,8 @@ class shipscog:
                         members = ', '.join(map(str,p['members']))
                         cstorder.append(members)
                         csttz = p['tzname']
-                        cstutc = (datetime.strptime(p['utctime'],'%H:%M:%S') + timedelta(days=1)) - datetime.strptime(current_time,'%H:%M:%S')
-                        if datetime.strptime(p['utctime'],'%H:%M:%S') > datetime.strptime(current_time,'%H:%M:%S'):
+                        cstutc = datetime.strptime(p['utctime'],'%H:%M:%S') - (datetime.strptime(current_time,'%H:%M:%S')-timedelta(hours=5))
+                        if datetime.strptime(p['utctime'],'%H:%M:%S') - timedelta(hours=1) < datetime.strptime(current_time,'%H:%M:%S'):
                             cstpayout = ' :moneybag:'
                         else:
                             cstpayout = ' - :clock130: ' + str(cstutc)
@@ -92,8 +92,8 @@ class shipscog:
                         members = ', '.join(map(str,p['members']))
                         mstorder.append(members)
                         msttz = p['tzname']
-                        mstutc = (datetime.strptime(p['utctime'],'%H:%M:%S') + timedelta(days=1)) - datetime.strptime(current_time,'%H:%M:%S')
-                        if datetime.strptime(p['utctime'],'%H:%M:%S') > datetime.strptime(current_time,'%H:%M:%S'):
+                        mstutc = datetime.strptime(p['utctime'],'%H:%M:%S') - (datetime.strptime(current_time,'%H:%M:%S')-timedelta(hours=5))
+                        if datetime.strptime(p['utctime'],'%H:%M:%S') - timedelta(hours=2) < datetime.strptime(current_time,'%H:%M:%S'):
                             mstpayout = ' :moneybag:'
                         else:
                             mstpayout = ' - :clock130: ' + str(mstutc)  
@@ -101,8 +101,8 @@ class shipscog:
                         members = ', '.join(map(str,p['members']))
                         akorder.append(members)
                         aktz = p['tzname']
-                        akutc = (datetime.strptime(p['utctime'],'%H:%M:%S') + timedelta(days=0, hours=-1)) - datetime.strptime(current_time,'%H:%M:%S')
-                        if (datetime.strptime(p['utctime'],'%H:%M:%S') + timedelta(hours=-3)) > datetime.strptime(current_time,'%H:%M:%S'):
+                        akutc = datetime.strptime(p['utctime'],'%H:%M:%S') - (datetime.strptime(current_time,'%H:%M:%S')-timedelta(hours=5))
+                        if (datetime.strptime(p['utctime'],'%H:%M:%S')  - timedelta(hours=5)) < datetime.strptime(current_time,'%H:%M:%S'):
                             akpayout = ' :moneybag:'
                         else:
                             akpayout = ' - :clock130: ' + str(akutc)                    
@@ -110,8 +110,8 @@ class shipscog:
                         members = ', '.join(map(str,p['members']))
                         pstorder.append(members)
                         psttz = p['tzname']
-                        pstutc = (datetime.strptime(p['utctime'],'%H:%M:%S')+timedelta(days=1)) - datetime.strptime(current_time,'%H:%M:%S')
-                        if datetime.strptime(p['utctime'],'%H:%M:%S') > datetime.strptime(current_time,'%H:%M:%S'):
+                        pstutc = datetime.strptime(p['utctime'],'%H:%M:%S') - (datetime.strptime(current_time,'%H:%M:%S')-timedelta(hours=5))
+                        if datetime.strptime(p['utctime'],'%H:%M:%S') - timedelta(hours=3) < datetime.strptime(current_time,'%H:%M:%S'):
                             pstpayout = ' :moneybag:'
                         else:
                             pstpayout = ' - :clock130: ' + str(pstutc)
