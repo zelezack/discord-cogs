@@ -27,7 +27,7 @@ class payoutcog:
         pstorder = []
 
         self.today = date.today()
-        current_time = time.strftime('%H:%M:%S', time.gmtime())
+        current_time = time.strftime('%H:%M:%S', time.localtime())
         if ctx.invoked_subcommand is None:
                 for p in parsed['squad']:
                     ordname = p['order']
@@ -36,8 +36,8 @@ class payoutcog:
                         ruorder.append(members)
                         ruflag = p['flag']
                         rutz = p['tzname']
-                        ruutc = datetime.strptime(p['utctime'],'%H:%M:%S') - (datetime.strptime(current_time,'%H:%M:%S')-timedelta(hours=5))
-                        if datetime.strptime(p['utctime'],'%H:%M:%S') > datetime.strptime(current_time,'%H:%M:%S'):
+                        ruutc = datetime.strptime(p['utctime'],'%H:%M:%S') - (datetime.strptime(current_time,'%H:%M:%S'))
+                        if datetime.strptime(p['utctime'],'%H:%M:%S') < datetime.strptime(current_time,'%H:%M:%S'):
                             rupayout = ' :moneybag:'
                         else:
                             rupayout = ' - :clock130: ' + str(ruutc)
@@ -46,8 +46,8 @@ class payoutcog:
                         euorder.append(members)
                         euflag = p['flag']
                         eutz = p['tzname']
-                        euutc = datetime.strptime(p['utctime'],'%H:%M:%S') - (datetime.strptime(current_time,'%H:%M:%S')-timedelta(hours=5))
-                        if datetime.strptime(p['utctime'],'%H:%M:%S') > datetime.strptime(current_time,'%H:%M:%S'):
+                        euutc = datetime.strptime(p['utctime'],'%H:%M:%S') - (datetime.strptime(current_time,'%H:%M:%S'))
+                        if datetime.strptime(p['utctime'],'%H:%M:%S') < datetime.strptime(current_time,'%H:%M:%S'):
                             eupayout = ' :moneybag:'
                         else:
                             eupayout = ' - :clock130: ' + str(euutc)
@@ -56,8 +56,8 @@ class payoutcog:
                         ukorder.append(members)
                         ukflag = p['flag']
                         uktz = p['tzname']
-                        ukutc = datetime.strptime(p['utctime'],'%H:%M:%S') - (datetime.strptime(current_time,'%H:%M:%S')-timedelta(hours=5))
-                        if datetime.strptime(p['utctime'],'%H:%M:%S') > datetime.strptime(current_time,'%H:%M:%S'):
+                        ukutc = datetime.strptime(p['utctime'],'%H:%M:%S') - (datetime.strptime(current_time,'%H:%M:%S'))
+                        if datetime.strptime(p['utctime'],'%H:%M:%S') < datetime.strptime(current_time,'%H:%M:%S'):
                             ukpayout = ' :moneybag:'
                         else:
                             ukpayout = ' - :clock130: ' + str(ukutc)              
@@ -66,7 +66,7 @@ class payoutcog:
                         estorder.append(members)
                         usflag = p['flag']
                         esttz = p['tzname']
-                        estutc = datetime.strptime(p['utctime'],'%H:%M:%S') - (datetime.strptime(current_time,'%H:%M:%S')-timedelta(hours=5))  
+                        estutc = datetime.strptime(p['utctime'],'%H:%M:%S') - (datetime.strptime(current_time,'%H:%M:%S'))  
                         if datetime.strptime(p['utctime'],'%H:%M:%S') < datetime.strptime(current_time,'%H:%M:%S'):
                             estpayout = ' :moneybag:'
                         else:
@@ -75,7 +75,7 @@ class payoutcog:
                         members = ', '.join(map(str,p['members']))
                         cstorder.append(members)
                         csttz = p['tzname']
-                        cstutc = datetime.strptime(p['utctime'],'%H:%M:%S') - (datetime.strptime(current_time,'%H:%M:%S')-timedelta(hours=5))
+                        cstutc = datetime.strptime(p['utctime'],'%H:%M:%S') - (datetime.strptime(current_time,'%H:%M:%S'))
                         if datetime.strptime(p['utctime'],'%H:%M:%S') < datetime.strptime(current_time,'%H:%M:%S'):
                             cstpayout = ' :moneybag:'
                         else:
@@ -85,7 +85,7 @@ class payoutcog:
                         pstorder.append(members)
                         psttz = p['tzname']
                         psttz = p['tzname']
-                        pstutc = datetime.strptime(p['utctime'],'%H:%M:%S') - (datetime.strptime(current_time,'%H:%M:%S')-timedelta(hours=5))
+                        pstutc = datetime.strptime(p['utctime'],'%H:%M:%S') - (datetime.strptime(current_time,'%H:%M:%S'))
                         if datetime.strptime(p['utctime'],'%H:%M:%S') < datetime.strptime(current_time,'%H:%M:%S'):
                             pstpayout = ' :moneybag:'
                         else:

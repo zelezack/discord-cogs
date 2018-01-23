@@ -6,7 +6,7 @@
             ],
             "order": "indorder",
             "tzname": "GMT+9",
-            "utctime": "10:00:00"
+            "utctime": "05:00:00"
         },
         {
             "members": [
@@ -14,7 +14,7 @@
             ],
             "order": "taiorder",
             "tzname": "GMT+8",
-            "utctime": "11:00:00"
+            "utctime": "06:00:00"
         },
         {
             "members": [
@@ -22,7 +22,7 @@
             ],
             "order": "saorder",
             "tzname": "GMT+2",
-            "utctime": "17:00:00"
+            "utctime": "12:00:00"
         },
         {
             "members": [
@@ -39,7 +39,7 @@
             ],
             "order": "euorder",
             "tzname": "GMT+1",
-            "utctime": "18:00:00"
+            "utctime": "13:00:00"
         },
         {
             "members": [
@@ -61,7 +61,7 @@
             ],
             "order": "estorder",
             "tzname": "GMT-5",
-            "utctime": "00:00:00"
+            "utctime": "19:00:00"
         },
         {
             "members": [
@@ -166,8 +166,8 @@
             ],
             "order": "euorder",
             "rotation": [
-                "Landa",
-                "Tom"
+                "Tom",
+                "Landa"
             ],
             "tzname": "GMT+1",
             "utctime": "12:00:00"
@@ -182,9 +182,9 @@
             ],
             "order": "ukorder",
             "rotation": [
-                "Ashaman",
                 "David",
-                "Jeff"
+                "Jeff",
+                "Ashaman"
             ],
             "tzname": "GMT",
             "utctime": "13:00:00"
@@ -203,12 +203,12 @@
             ],
             "order": "estorder",
             "rotation": [
-                "DD",
                 "JPK",
                 "Bool",
                 "DB",
                 "Vondy",
-                "Skammadix"
+                "Skammadix",
+                "DD"
             ],
             "tzname": "GMT-5",
             "utctime": "18:00:00"
@@ -227,11 +227,11 @@
             ],
             "order": "cstorder",
             "rotation": [
-                "Strive",
                 "JustBKillin",
                 "Taco",
                 "Jolly",
-                "MistahShowtime"
+                "MistahShowtime",
+                "Strive"
             ],
             "tzname": "GMT-6",
             "utctime": "19:00:00"
