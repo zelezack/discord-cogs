@@ -1,0 +1,359 @@
+{
+    "fleet": [
+        {
+            "flag": ":flag_sb:",
+            "members": [
+                ""
+            ],
+            "order": "utcp11",
+            "rotation": [
+                ""
+            ],
+            "tzname": "UTC+11",
+            "utctime": "04:00:00"
+        },
+        {
+            "flag": "",
+            "members": [
+                ""
+            ],
+            "order": "utcp10",
+            "rotation": [
+                ""
+            ],
+            "tzname": "UTC+10",
+            "utctime": "05:00:00"
+        },
+        {
+            "flag": ":flag_kr:",
+            "members": [
+                "Cartan Cha",
+                "NSC \uc120\ud558"
+            ],
+            "order": "utcp9",
+            "rotation": [
+                ""
+            ],
+            "tzname": "UTC+9",
+            "utctime": "06:00:00"
+        },
+        {
+            "flag": ":flag_ch:",
+            "members": [
+                "Astonmartin"
+            ],
+            "order": "utcp8",
+            "rotation": [
+                ""
+            ],
+            "tzname": "UTC+8",
+            "utctime": "07:00:00"
+        },
+        {
+            "flag": ":flag_th:",
+            "members": [
+                ""
+            ],
+            "order": "utcp7",
+            "rotation": [
+                ""
+            ],
+            "tzname": "UTC+7",
+            "utctime": "08:00:00"
+        },
+        {
+            "flag": ":flag_bd:",
+            "members": [
+                ""
+            ],
+            "order": "utcp6",
+            "rotation": [
+                ""
+            ],
+            "tzname": "UTC+6",
+            "utctime": "09:00:00"
+        },
+        {
+            "flag": ":flag_pk:",
+            "members": [
+                ""
+            ],
+            "order": "utcp5",
+            "rotation": [
+                ""
+            ],
+            "tzname": "UTC+5",
+            "utctime": "10:00:00"
+        },
+        {
+            "flag": ":flag_in:",
+            "members": [
+                "Praven"
+            ],
+            "order": "utcp55",
+            "tzname": "GMT+5.5",
+            "utctime": "10:30:00"
+        },
+        {
+            "flag": ":flag_om:",
+            "members": [
+                "Kyle"
+            ],
+            "order": "utcp4",
+            "rotation": [
+                ""
+            ],
+            "tzname": "UTC+4",
+            "utctime": "11:00:00"
+        },
+        {
+            "flag": ":flag_ru:",
+            "members": [
+                "Earxe",
+                "Shidapu"
+            ],
+            "order": "utcp3",
+            "rotation": [
+                ""
+            ],
+            "tzname": "UTC+3",
+            "utctime": "12:00:00"
+        },
+        {
+            "flag": ":flag_eu:",
+            "members": [
+                
+            ],
+            "order": "utcp2",
+            "rotation": [
+               
+            ],
+            "tzname": "UTC+2",
+            "utctime": "13:00:00"
+        },
+        {
+            "flag": ":flag_eu:",
+            "members": [
+                "Aboo Rhaegar",
+                "Danielix",
+                "Deadspace",
+                "Havoc",
+                "Redios",
+                "Wookierotica",
+                "Kyle",
+                "Gorael",
+                "Trapper",
+                "Youpla",
+                "Ravadus",
+                "Chrizon",
+                "ScArFaZ3",
+                "TomTom"
+            ],
+            "order": "utcp1",
+            "rotation": [
+                ""
+            ],
+            "tzname": "UTC+1",
+            "utctime": "14:00:00"
+        },
+        {
+            "flag": ":flag_gb:",
+            "members": [
+               
+            ],
+            "order": "utc",
+            "rotation": [
+                ""
+            ],
+            "tzname": "UTC",
+            "utctime": "15:00:00"
+        },
+        {
+            "flag": ":flag_cv:",
+            "members": [
+                "Dikbutt"
+            ],
+            "order": "utcm1",
+            "rotation": [
+                ""
+            ],
+            "tzname": "UTC-1",
+            "utctime": "16:00:00"
+        },
+        {
+            "flag": ":flag_gs:",
+            "members": [
+                "Himelfarb"
+            ],
+            "order": "utcm2",
+            "rotation": [
+                ""
+            ],
+            "tzname": "UTC-2",
+            "utctime": "17:00:00"
+        },
+        {
+            "flag": ":flag_br:",
+            "members": [
+                "ChuckTaylor"
+            ],
+            "order": "utcm3",
+            "rotation": [
+                ""
+            ],
+            "tzname": "UTC-3",
+            "utctime": "18:00:00"
+        },
+        {
+            "flag": ":flag_br:",
+            "members": [
+                ""
+            ],
+            "order": "utcm4",
+            "rotation": [
+                ""
+            ],
+            "tzname": "UTC-4",
+            "utctime": "19:00:00"
+        },
+        {
+            "flag": ":flag_us:",
+            "members": [
+                "Johnritaiii",
+                "Neville",
+                "Car Al Mel",
+                "Bozz",
+                "Cy",
+                "Wiickett",
+                "Sbdraptor",
+                "TraylonSatty",
+                "GingerVitas",
+                "Slacks Cardigan",
+                "Clash the Corrupted",
+                "HoodedBiscuit",
+                "Golron",
+                "Iapetus",
+                "bigblackguy",
+                "Thysk"
+            ],
+            "order": "utcm5",
+            "rotation": [
+                ""
+            ],
+            "tzname": "UTC-5",
+            "utctime": "20:00:00"
+        },
+        {
+            "flag": ":flag_us:",
+            "members": [
+                "Aden Ski",
+                "Bill",
+                "Jon Snow",
+                "Snake",
+                "Tastynacho",
+                "Syndros Stormcaller",
+                "nonickname"
+            ],
+            "order": "utcm6",
+            "rotation": [
+                ""
+            ],
+            "tzname": "UTC-6",
+            "utctime": "21:00:00"
+        },
+        {
+            "flag": ":flag_us:",
+            "members": [
+                "AJMagic",
+                "Atreyu",
+                "Kate3PO",
+                "Rath",
+                "Seabass4818"
+            ],
+            "order": "utcm7",
+            "rotation": [
+                ""
+            ],
+            "tzname": "UTC-7",
+            "utctime": "22:00:00"
+        },
+        {
+            "flag": ":flag_us:",
+            "members": [
+                ""
+                
+            ],
+            "order": "utcm8",
+            "rotation": [
+                ""
+            ],
+            "tzname": "UTC-8",
+            "utctime": "23:00:00"
+        },
+        {
+            "flag": ":flag_us:",
+            "members": [
+                "Mumble"
+            ],
+            "order": "utcm9",
+            "rotation": [
+                ""
+            ],
+            "tzname": "UTC-9",
+            "utctime": "23:59:59"
+        },
+        {
+            "flag": ":flag_us:",
+            "members": [
+                ""
+            ],
+            "order": "utcm10",
+            "rotation": [
+                ""
+            ],
+            "tzname": "UTC-10",
+            "utctime": "01:00:00"
+        },
+        {
+            "flag": ":flag_ws:",
+            "members": [
+                ""
+            ],
+            "order": "utcm11",
+            "rotation": [
+                ""
+            ],
+            "tzname": "UTC-11",
+            "utctime": "02:00:00"
+        }
+    ],
+
+    "fleet-shit": [
+        {
+            "members": [
+                "Skunkfox",
+                "SuperTee",
+                "Thanatos",
+                "Zach",
+                "ValOdin",
+                "djbobo",
+                "kaeppi",
+                "emeric",
+                "old wasp1",
+                "Thehbomb",
+                "mol crwlng",
+                "rojo cinco",
+                "Malith Forcegrabber",
+                "garciamanso",
+                "Docperi",
+                "Bozz",
+                "Azuki777",
+                "SATOSHI",
+                "Saku",
+                "Rajahark",
+                "Bishop",
+                "DragonAF5"
+            ]
+        }
+    ]
+}

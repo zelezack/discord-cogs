@@ -1,0 +1,321 @@
+{
+    "shitlist": [
+        {
+            "members": [
+                "Lookaround",
+                "Doublan",
+                "501st Trooper74",
+                "Xuqlid",
+                "Thestone",
+                "advanced",
+                "SportsDoc17",
+                "Ivan",
+                "Anarchy",
+                "Beld",
+                "poppu",
+                "Coranti",
+                "Kolo",
+                "decimus",
+                "orion",
+                "boolsith",
+                "ringkrieger",
+                "bendover",
+                "cockmaster",
+                "Nirrti",
+                "Ocat",
+                "Nikos"
+            ]
+        }
+    ],
+    "newsquad": [
+        {
+            "flag": ":flag_sb:",
+            "members": [
+                "Strive"
+            ],
+            "order": "utcp11",
+            "rotation": [
+                ""
+            ],
+            "tzname": "UTC+11",
+            "utctime": "03:00:00"
+        },
+        {
+            "flag": "",
+            "members": [
+                ""
+            ],
+            "order": "utcp10",
+            "rotation": [
+                ""
+            ],
+            "tzname": "UTC+10",
+            "utctime": "04:00:00"
+        },
+        {
+            "flag": "",
+            "members": [
+                ""
+            ],
+            "order": "utcp9",
+            "rotation": [
+                ""
+            ],
+            "tzname": "UTC+9",
+            "utctime": "05:00:00"
+        },
+        {
+            "flag": ":flag_ch:",
+            "members": [
+                "Ralphrauvine"
+            ],
+            "order": "utcp8",
+            "rotation": [
+                ""
+            ],
+            "tzname": "UTC+8",
+            "utctime": "06:00:00"
+        },
+        {
+            "flag": ":flag_th:",
+            "members": [
+                "Marijus"
+            ],
+            "order": "utcp7",
+            "rotation": [
+                ""
+            ],
+            "tzname": "UTC+7",
+            "utctime": "07:00:00"
+        },
+        {
+            "flag": ":flag_bd:",
+            "members": [
+                "Aranud"
+            ],
+            "order": "utcp6",
+            "rotation": [
+                ""
+            ],
+            "tzname": "UTC+6",
+            "utctime": "08:00:00"
+        },
+        {
+            "flag": ":flag_pk:",
+            "members": [
+                "Jeffbacca"
+            ],
+            "order": "utcp5",
+            "rotation": [
+                ""
+            ],
+            "tzname": "UTC+5",
+            "utctime": "09:00:00"
+        },
+        {
+            "flag": ":flag_om:",
+            "members": [
+                "David"
+            ],
+            "order": "utcp4",
+            "rotation": [
+                ""
+            ],
+            "tzname": "UTC+4",
+            "utctime": "10:00:00"
+        },
+        {
+            "flag": ":flag_ru:",
+            "members": [
+                "Amarey"
+            ],
+            "order": "utcp3",
+            "rotation": [
+                ""
+            ],
+            "tzname": "UTC+3",
+            "utctime": "11:00:00"
+        },
+        {
+            "flag": ":flag_eu:",
+            "members": [
+                "Landalash",
+                "Startomsto"
+            ],
+            "order": "utcp2",
+            "rotation": [
+                "Startomsto",
+                "Landalash"
+                
+            ],
+            "tzname": "UTC+2",
+            "utctime": "12:00:00"
+        },
+        {
+            "flag": ":flag_eu:",
+            "members": [
+                "LouLou",
+                "Alex"
+            ],
+            "order": "utcp1",
+            "rotation": [
+                ""
+            ],
+            "tzname": "UTC+1",
+            "utctime": "13:00:00"
+        },
+        {
+            "flag": ":flag_gb:",
+            "members": [
+                "MistahShowtime",
+                "Faz"
+            ],
+            "order": "utc",
+            "rotation": [
+                ""
+            ],
+            "tzname": "UTC",
+            "utctime": "14:00:00"
+        },
+        {
+            "flag": ":flag_cv:",
+            "members": [
+                "Dikbutt",
+                "Jak Telor",
+                "Tigle"
+            ],
+            "order": "utcm1",
+            "rotation": [
+                ""
+            ],
+            "tzname": "UTC-1",
+            "utctime": "15:00:00"
+        },
+        {
+            "flag": ":flag_gs:",
+            "members": [
+                "Taco",
+                "Rooskis"
+            ],
+            "order": "utcm2",
+            "rotation": [
+                ""
+            ],
+            "tzname": "UTC-2",
+            "utctime": "16:00:00"
+        },
+        {
+            "flag": ":flag_br:",
+            "members": [
+                "Vondy",
+                "Lee Christmas"
+            ],
+            "order": "utcm3",
+            "rotation": [
+                ""
+            ],
+            "tzname": "UTC-3",
+            "utctime": "17:00:00"
+        },
+        {
+            "flag": ":flag_br:",
+            "members": [
+                "Jolly Roger"
+            ],
+            "order": "utcm4",
+            "rotation": [
+                ""
+            ],
+            "tzname": "UTC-4",
+            "utctime": "18:00:00"
+        },
+        {
+            "flag": ":flag_us:",
+            "members": [
+                "Knockamus"
+            ],
+            "order": "utcm5",
+            "rotation": [
+                ""
+            ],
+            "tzname": "UTC-5",
+            "utctime": "19:00:00"
+        },
+        {
+            "flag": ":flag_us:",
+            "members": [
+                "Notadopted",
+                "Xanderxman"
+            ],
+            "order": "utcm6",
+            "rotation": [
+                ""
+            ],
+            "tzname": "UTC-6",
+            "utctime": "20:00:00"
+        },
+        {
+            "flag": ":flag_us:",
+            "members": [
+                "DarthDilsnick",
+                "JBK"
+            ],
+            "order": "utcm7",
+            "rotation": [
+                ""
+            ],
+            "tzname": "UTC-7",
+            "utctime": "21:00:00"
+        },
+        {
+            "flag": ":flag_us:",
+            "members": [
+                "Emperor Kalpatine",
+                ""
+            ],
+            "order": "utcm8",
+            "rotation": [
+                ""
+            ],
+            "tzname": "UTC-8",
+            "utctime": "22:00:00"
+        },
+        {
+            "flag": ":flag_us:",
+            "members": [
+                "Skammadix"
+            ],
+            "order": "utcm9",
+            "rotation": [
+                ""
+            ],
+            "tzname": "UTC-9",
+            "utctime": "23:00:00"
+        },
+        {
+            "flag": ":flag_us:",
+            "members": [
+                "Cherno",
+                "Icarus"
+            ],
+            "order": "utcm10",
+            "rotation": [
+                ""
+            ],
+            "tzname": "UTC-10",
+            "utctime": "23:59:59"
+        },
+        {
+            "flag": ":flag_ws:",
+            "members": [
+                "JetPax Kiaser"
+            ],
+            "order": "utcm11",
+            "rotation": [
+                ""
+            ],
+            "tzname": "UTC-11",
+            "utctime": "01:00:00"
+        }
+    ]
+}

@@ -16,78 +16,54 @@ class rotationcog:
 
     @commands.command(pass_context=True)
     async def rotation(self, ctx):
-        image = "pictures/giphy.gif"
+        image = "cogs/giphy.gif"
         channel = ctx.message.channel
         self.today = date.today()
         with open('cogs/assets/payouts.json', 'r') as json_file:
             parsed = json.load(json_file)
-        ruorder = []
-        euorder = []
-        ukorder = []
-        estorder = []
-        cstorder = []
-        pstorder = []
+        utcp2 = []
 
-        for p in parsed['squad']:
+        for p in parsed['newsquad']:
             ordname = p['order']
-            if ordname == 'ruorder':
+            if ordname == 'utcp2':
                 rotation = ', '.join(map(str,p['rotation']))
-                ruorder.append(rotation)
-                ruflag = p['flag']
-                rutz = p['tzname']
-            elif ordname == 'euorder':
-                rotation = ', '.join(map(str,p['rotation']))
-                euorder.append(rotation)
-                euflag = p['flag']
-                eutz = p['tzname']
-            elif ordname == 'ukorder':
-                rotation = ', '.join(map(str,p['rotation']))
-                ukorder.append(rotation)
-                ukflag = p['flag']
-                uktz = p['tzname']
-            elif ordname == 'estorder':
-                rotation = ', '.join(map(str,p['rotation']))
-                estorder.append(rotation)
-                usflag = p['flag']
-                esttz = p['tzname']
-            elif ordname == 'cstorder':
-                rotation = ', '.join(map(str,p['rotation']))
-                cstorder.append(rotation)
-                csttz = p['tzname']
-            else:
-                rotation = ', '.join(map(str,p['rotation']))
-                pstorder.append(rotation)
-                psttz = p['tzname']
+                utcp2.append(rotation)
+                utcp2flag = p['flag']
+                utcp2tz = p['tzname']
+
                     
         await self.bot.send_file(channel, image)
         await self.bot.say("Rotation list for " + str(self.today) + ':\n' +
-                ':flag_ru: MR: ' + ', '.join(ruorder) +'\n' +
-                ':flag_eu: Viva: ' + ', '.join(euorder) + ', LouLou, Alex\n' +
-                ':flag_gb: UK: ' +', '.join(ukorder) + '\n' +
-                ':flag_us: EST: ' +', '.join(estorder)+ '\n'+
-                ':flag_us: CST: ' + ', '.join(cstorder) + '\n' +
-                ':flag_us: PST: ' +  ', '.join(pstorder) + '\n')
+                utcp2flag + utcp2tz + " - " + ', '.join(utcp2) +"\n"
+                )
+    @commands.command(pass_context=True)
+    async def rotationSFW(self, ctx):
+        channel = ctx.message.channel
+        self.today = date.today()
+        with open('cogs/assets/payouts.json', 'r') as json_file:
+            parsed = json.load(json_file)
+        utcp2 = []
+
+        for p in parsed['squad']:
+            ordname = p['order']
+            if ordname == 'utcp2':
+                rotation = ', '.join(map(str,p['rotation']))
+                utcp2.append(rotation)
+                utcp2flag = p['flag']
+                utcp2tz = p['tzname']
+                    
+        await self.bot.say("Rotation list for " + str(self.today) + ':\n' +
+                utcp2flag + utcp2tz + ', - '.join(utcp2) +'\n'
+                )
 
     @commands.command(pass_context=True)
     @checks.mod_or_permissions(manage_messages=True)
     async def newday(self, ctx):
         with open('cogs/assets/payouts.json', 'r') as json_file:
             parsed = json.load(json_file)
-        for p in parsed['squad']:
+        for p in parsed['newsquad']:
             ordname = p['order']
-            if ordname == 'euorder':
-                rotation = ', '.join(map(str,p['rotation']))
-                person = p['rotation'].pop(0)
-                p['rotation'].append(person)
-            if ordname == 'ukorder':
-                rotation = ', '.join(map(str,p['rotation']))
-                person = p['rotation'].pop(0)
-                p['rotation'].append(person)
-            if ordname == 'estorder':
-                rotation = ', '.join(map(str,p['rotation']))
-                person = p['rotation'].pop(0)
-                p['rotation'].append(person)
-            if ordname == 'cstorder':
+            if ordname == 'utcp2order':
                 rotation = ', '.join(map(str,p['rotation']))
                 person = p['rotation'].pop(0)
                 p['rotation'].append(person)
